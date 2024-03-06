@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+}
+
+#pokemon-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 25px 20px;
+    justify-content: space-between;
+}
+
+#pokemon-list > div > h6 {
+    margin: 0;
+}
+
+.pokemon-container {
+    text-align: center;
+}
