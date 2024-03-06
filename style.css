@@ -2,17 +2,22 @@ body {
     margin: 0;
 }
 
+.container {
+    padding: 0 3rem;
+}
+
 #pokemon-list {
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: repeat(auto-fill, 100px);
     grid-gap: 25px 20px;
     justify-content: space-between;
 }
 
-#pokemon-list > div > h6 {
+.pokemon-title {
     margin: 0;
 }
 
-.pokemon-container {
+.pokemon-card {
     text-align: center;
+    cursor: pointer;
 }
