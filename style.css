@@ -8,7 +8,7 @@ body {
 
 #pokemon-list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, 100px);
+    grid-template-columns: repeat(auto-fill, 135px);
     grid-gap: 25px 20px;
     justify-content: space-between;
 }
@@ -20,4 +20,20 @@ body {
 .pokemon-card {
     text-align: center;
     cursor: pointer;
+}
+
+.pokemon-card > img {
+    display: inline-block;
+    width: 100%;
+}
+
+#pagination {
+    text-align: end;
+}
+
+#pagination > div {
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem;
 }

@@ -1,8 +1,7 @@
-const getPokemones = async() => {
-    const response = await fetch('https://pokeapi.co/api/v2/pokemon')
+const getPokeData = async(url) => {
+    const response = await fetch(url)
     const data = await response.json()
-    const pokemones = data.results
-    return pokemones
+    return data
 }
 
 const addImgsCries = async(pokemones) => {
@@ -18,6 +17,9 @@ const addImgsCries = async(pokemones) => {
 
 const printHtml = (pokemones) => {
     const pokemonList = document.getElementById('pokemon-list')
+    while (pokemonList.firstChild) {
+      pokemonList.removeChild(pokemonList.firstChild)
+    }
 
     pokemones.forEach((pokemon) => {
         const pokemonName = pokemon.name
@@ -46,11 +48,24 @@ const printHtml = (pokemones) => {
     })
 }
 
-const setPokeList = async() => {
-    const pokemones = await getPokemones()
+const setChangePage = (urls) => {
+    const nextBtn = document.getElementById('next-btn')
+    nextBtn.onclick = () => clickHandler(urls.next)
+    
+    const backBtn = document.getElementById('back-btn')
+    backBtn.onclick = () => clickHandler(urls.previous)
+}
+const clickHandler = url => setPokeList(url)
+
+const setPokeList = async(url) => {
+    const pokeData = await getPokeData(url)
+    const pokemones = pokeData.results
+
+    setChangePage(pokeData)
+
     await addImgsCries(pokemones)
     
     printHtml(pokemones)
 }
 
-setPokeList()
+setPokeList('https://pokeapi.co/api/v2/pokemon?limit=28')
